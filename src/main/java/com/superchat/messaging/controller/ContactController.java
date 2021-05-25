@@ -35,7 +35,7 @@ public class ContactController
 
 
     @GetMapping("/{contactId}")
-    public ContactDTO getContact(@PathVariable long contactId) throws EntityNotFoundException
+    public ContactDTO findContact(@PathVariable long contactId) throws EntityNotFoundException
     {
         return ContactMapper.makeContactDTO(contactService.find(contactId));
     }

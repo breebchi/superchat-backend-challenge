@@ -52,6 +52,12 @@ public class ContactDO
     }
 
 
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+
     public ZonedDateTime getDateCreated()
     {
         return dateCreated;

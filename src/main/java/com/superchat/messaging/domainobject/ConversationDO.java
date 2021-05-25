@@ -22,7 +22,6 @@ public class ConversationDO
     private Long id;
     @OneToOne(mappedBy = "conversation")
     private ContactDO contact;
-
     @ElementCollection
     @CollectionTable(name = "conversation_message", joinColumns = @JoinColumn(name = "conversation_id"), foreignKey = @ForeignKey(name = "conversation_message_conversation_fk"))
     private List<Message> messages = new ArrayList<>();
@@ -42,6 +41,12 @@ public class ConversationDO
     public Long getId()
     {
         return id;
+    }
+
+
+    public void setId(Long id)
+    {
+        this.id = id;
     }
 
 
