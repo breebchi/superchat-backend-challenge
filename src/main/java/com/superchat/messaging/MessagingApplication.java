@@ -9,14 +9,24 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.io.IOException;
+
 @EnableSwagger2
 @SpringBootApplication
 public class MessagingApplication extends WebConfig
 {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         SpringApplication.run(MessagingApplication.class, args);
+        openHomePage();
+    }
+
+
+    private static void openHomePage() throws IOException
+    {
+        Runtime rt = Runtime.getRuntime();
+        rt.exec("rundll32 url.dll,FileProtocolHandler " + "http://localhost:8080");
     }
 
 

@@ -17,7 +17,7 @@ public class ContactMapper
 
     public static ContactDO makeContactDO(ContactDTO contactDTO)
     {
-        return new ContactDO(contactDTO.getName(), contactDTO.getEmail(), new ConversationDO());
+        return new ContactDO(contactDTO.getName().trim(), contactDTO.getEmail().trim(), new ConversationDO());
     }
 
 

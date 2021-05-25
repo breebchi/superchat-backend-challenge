@@ -32,6 +32,7 @@ public class ContactDO
     @JoinColumn(name = "conversation_id", referencedColumnName = "id")
     private ConversationDO conversation;
 
+
     public ContactDO()
     {
     }
@@ -92,8 +93,10 @@ public class ContactDO
         this.conversation = conversation;
     }
 
+
     @Override
-    public String toString() {
+    public String toString()
+    {
         return String.format("id = %d, name = %s, email =%s", id, name, email);
     }
 }

@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Locale;
+
+import static com.superchat.messaging.dataaccessobject.ContactRepository.qContactDO;
 
 /**
  * Service to encapsulate the link between DAO and controller and to have business logic for some conversation specific things.
@@ -25,8 +26,6 @@ public class DefaultConversationService implements ConversationService
 
     private final ConversationRepository conversationRepository;
     private final ContactRepository contactRepository;
-
-    private final String LANGUAGE = Locale.ENGLISH.getLanguage();
 
 
     public DefaultConversationService(ConversationRepository conversationRepository, ContactRepository contactRepository)
@@ -101,7 +100,7 @@ public class DefaultConversationService implements ConversationService
 
     private ContactDO guessContactByText(String text) throws ConstraintsViolationException
     {
-        List<ContactDO> contactList = contactRepository.searchContactNames(text, LANGUAGE);
+        List<ContactDO> contactList = contactRepository.findAll(qContactDO.name.lower().in(text.toLowerCase()));
         if (contactList.size() != 1)
         {
             throw new ConstraintsViolationException(String.format("Too many or no possible contact matches %s : ", contactList), null);
